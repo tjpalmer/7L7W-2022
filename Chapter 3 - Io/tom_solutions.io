@@ -49,3 +49,14 @@ fibLoop := method(n,
 )
 fibLoop(6) println
 Lobby println
+sumDeep := method(x,
+    if(x at(0) type == "List", x = x map(item, sumDeep(item)))
+    sum := 0
+    x foreach(item, sum = sum + item)
+    # Above loop is nil if list is empty.
+    sum
+)
+x := list(list(1, 2), list(3, 4))
+x println
+sumDeep(x) println
+sumDeep(list()) println
